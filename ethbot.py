@@ -82,7 +82,7 @@ while True:
     if (email == True):
 
         print "%s: Sending daily update-mail..." % bot
-        mail("skreeler@gmail.com","Daily Update for ETHER",subject)
+        mail(gmail_user,"Daily Update for ETHER",subject)
         print "%s: Done." % bot
         email = False
     else:
