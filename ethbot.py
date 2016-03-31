@@ -16,19 +16,31 @@ import time
 import sys
 import platform
 from time import gmtime, strftime
+import requests
 
 
-system = platform.system()+platform.release()
+
+
+###settings
 gmail_user = "****" #gmail Username e.g. john.doe@gmail.com
 gmail_pwd = "****" #password
+walletadress = "****" #adress of your ethereum account
+bot = "[EthBot-1.1]" #current version
+freq = 30 #time in seconds - refreshs every x seconds
+email = False
+system = platform.system()+platform.release()
+###
+
+
 try:
-    alert = float(sys.argv[1]) #run the script with an number as an argument for the desired worth of ETH e.g. "python ethbot.py 12" sends an mail if ETH is worth 12$
+    alert = float(sys.argv[1])
 except:
     alert = 100
-coins = 20 #enter the amound of ETH - geth compatibility is coming in version 1.2
-email = False
-bot = "[EthBot-1.0]" #current version
-freq = 20 #time in seconds - refreshs every x seconds
+
+
+
+
+
 
 
 def mail(to, subject, text):
@@ -52,6 +64,12 @@ def mail(to, subject, text):
 
 
 while True:
+    r = requests.get("https://etherchain.org/api/account/%s/" % walletadress)
+    r.status_code
+    list = r.json()
+    coins =  (float(list["data"][0]["balance"])/10**18)
+
+
     if (strftime("%H:%M", gmtime()) == "08:06"): #sets email to True so does not send multiple mails, change hour(08) or minute(06) to your schedule
         email = True
 
