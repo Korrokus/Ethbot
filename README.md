@@ -1,9 +1,9 @@
-# Ethbot 1.0
+# Ethbot 1.1
 
 
 An mailbot for Ethereum https://www.ethereum.org/ that sends you daily mails or threshold mails written in Python.
 
-Currently only working with Gmail's smtp, for future support I also plan to impliment https://github.com/ethereum/wiki/wiki/Serpent for grabbing wallets.
+Currently only working with Gmail's smtp, for future support.
 You may have to change Gmails security settings according to raised errors.
 
 1. http://www.google.com/accounts/DisplayUnlockCaptcha
@@ -12,3 +12,5 @@ You may have to change Gmails security settings according to raised errors.
 for usage call the script with int arguments.
 
 "python ethbot.py 12" will wait until ETH reaches 12$ and sends you an mail if so.
+
+Added wallet balance access through an API.
